@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\Models">
+      <UniqueIdentifier>{a122f8ba-5aa3-47e3-ba19-0f03da0edfcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Statics">
+      <UniqueIdentifier>{3772ff49-2a47-4ec8-854f-043adb591d11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Statics">
+      <UniqueIdentifier>{0d2e6d57-7de7-40e2-8996-27395d6b2cf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Models">
+      <UniqueIdentifier>{46ab0381-7e35-412a-8de5-3952fd8e1686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Interfaces">
+      <UniqueIdentifier>{df23b2ec-39da-4f80-b3c5-94dd7c6eae85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Events">
+      <UniqueIdentifier>{4101bacc-7568-44b1-8a7b-05efca99c7bc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GraphicEngine.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="SAppContext.h">
+      <Filter>Headerdateien\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Skin.h">
+      <Filter>Headerdateien\Statics</Filter>
+    </ClInclude>
+    <ClInclude Include="Point2D.h">
+      <Filter>Headerdateien\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Headerdateien\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="IPrimitiveDraw.h">
+      <Filter>Headerdateien\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IPrimitiveGraphic.h">
+      <Filter>Headerdateien\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="EventReceiver.h">
+      <Filter>Headerdateien\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="IGeometry.h">
+      <Filter>Headerdateien\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IrrPoint.h">
+      <Filter>Headerdateien\Models</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GraphicEngine.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Skin.cpp">
+      <Filter>Quelldateien\Statics</Filter>
+    </ClCompile>
+    <ClCompile Include="Point2D.cpp">
+      <Filter>Quelldateien\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Quelldateien\Models</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

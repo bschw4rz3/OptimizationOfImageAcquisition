@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Binaries">
+      <UniqueIdentifier>{fff09a65-2bbd-44b3-a9e1-6f3008c292ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Draws">
+      <UniqueIdentifier>{2e4915c4-33fa-4339-abd3-a80304901ce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Draws">
+      <UniqueIdentifier>{ff152476-f1ab-4ace-8aba-02fd7acecf7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Events">
+      <UniqueIdentifier>{9d1cac0c-774b-4cfa-96f1-80c295ed0dac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Events">
+      <UniqueIdentifier>{9c9f54d0-8356-4795-a23b-bca48ba3b1ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Calculations">
+      <UniqueIdentifier>{949782ca-178e-4b34-8064-eeb4e7432afd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Calculations">
+      <UniqueIdentifier>{66d9e21c-f893-42cc-b92d-8d244edbba7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Results">
+      <UniqueIdentifier>{0fc56e69-db8e-4e84-90a9-f0cab954a2c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Results">
+      <UniqueIdentifier>{5001a22d-d5fb-450d-bbc6-1410f7442766}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Calculations\Helpers">
+      <UniqueIdentifier>{093aab04-4b70-45b2-bfc8-4c4e3135a586}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Calculations\Helpers">
+      <UniqueIdentifier>{2f036403-395a-4bd1-b804-54de3325a6b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Results\HittingSet">
+      <UniqueIdentifier>{7741bb2c-2aa5-4813-ad53-67850883633e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Results\HittingSet">
+      <UniqueIdentifier>{f123a71c-e0a0-4e38-b053-5e56a6e072b2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="BananaPrimitive.cpp">
+      <Filter>Quelldateien\Draws</Filter>
+    </ClCompile>
+    <ClCompile Include="MyEventReceiver.cpp">
+      <Filter>Quelldateien\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="BruteForceService.cpp">
+      <Filter>Quelldateien\Calculations</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculationResult.cpp">
+      <Filter>Quelldateien\Results</Filter>
+    </ClCompile>
+    <ClCompile Include="GreedyService.cpp">
+      <Filter>Quelldateien\Calculations</Filter>
+    </ClCompile>
+    <ClCompile Include="MonteCarloService.cpp">
+      <Filter>Quelldateien\Calculations</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadSortService.cpp">
+      <Filter>Quelldateien\Calculations</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculationHelper.cpp">
+      <Filter>Quelldateien\Calculations\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="CalculationQuadResult.cpp">
+      <Filter>Quelldateien\Results</Filter>
+    </ClCompile>
+    <ClCompile Include="MonteCarloHittingSetService.cpp">
+      <Filter>Quelldateien\Calculations</Filter>
+    </ClCompile>
+    <ClCompile Include="HittingSetDescriptionResult.cpp">
+      <Filter>Quelldateien\Results\HittingSet</Filter>
+    </ClCompile>
+    <ClCompile Include="HittingSetPoint.cpp">
+      <Filter>Quelldateien\Results\HittingSet</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\lib\Irrlicht.dll">
+      <Filter>Binaries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\IrrlichtWrapper\fonthaettenschweiler.bmp">
+      <Filter>Ressourcendateien</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BananaPrimitive.h">
+      <Filter>Headerdateien\Draws</Filter>
+    </ClInclude>
+    <ClInclude Include="MyEventReceiver.h">
+      <Filter>Headerdateien\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="BruteForceService.h">
+      <Filter>Headerdateien\Calculations</Filter>
+    </ClInclude>
+    <ClInclude Include="CalculationResult.h">
+      <Filter>Headerdateien\Results</Filter>
+    </ClInclude>
+    <ClInclude Include="GreedyService.h">
+      <Filter>Headerdateien\Calculations</Filter>
+    </ClInclude>
+    <ClInclude Include="MonteCarloService.h">
+      <Filter>Headerdateien\Calculations</Filter>
+    </ClInclude>
+    <ClInclude Include="VariationResult.h">
+      <Filter>Headerdateien\Results</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadSortService.h">
+      <Filter>Headerdateien\Calculations</Filter>
+    </ClInclude>
+    <ClInclude Include="CalculationHelper.h">
+      <Filter>Headerdateien\Calculations\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="CalculationQuadResult.h">
+      <Filter>Headerdateien\Results</Filter>
+    </ClInclude>
+    <ClInclude Include="MonteCarloHittingSetService.h">
+      <Filter>Headerdateien\Calculations</Filter>
+    </ClInclude>
+    <ClInclude Include="HittingSetDescriptionResult.h">
+      <Filter>Headerdateien\Results\HittingSet</Filter>
+    </ClInclude>
+    <ClInclude Include="HittingSetPoint.h">
+      <Filter>Headerdateien\Results\HittingSet</Filter>
+    </ClInclude>
+    <ClInclude Include="SimulationResult.h">
+      <Filter>Headerdateien\Results</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Quelldateien\models">
+      <UniqueIdentifier>{089beb24-ed4b-461a-a4b3-5d24dace790d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\models">
+      <UniqueIdentifier>{f750fc14-de94-4d3f-bdad-d1ed1bb12943}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\models\facets">
+      <UniqueIdentifier>{3ed40302-7f3b-454a-9a76-00534f2c7687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\models\facets">
+      <UniqueIdentifier>{584da892-4086-42d6-bbc8-a55cee4dc539}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\services">
+      <UniqueIdentifier>{341052b2-0ad4-464f-9c29-df317ff3d3f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\services\rasters">
+      <UniqueIdentifier>{b70d474b-a4d7-4220-aec6-e1d2a20cbb86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\services">
+      <UniqueIdentifier>{9ab3ac1d-2bf4-4814-bc74-3aba5e6347cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\services\rasters">
+      <UniqueIdentifier>{39f192e6-208b-4aa0-aef4-5afeedbae9ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\models\results">
+      <UniqueIdentifier>{ccca10bc-d266-41ab-a5ff-b8fe52c92271}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\models\results">
+      <UniqueIdentifier>{3f870c1c-54b4-4ac7-b2f3-23e5f6171e88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\services\helpers">
+      <UniqueIdentifier>{20943faa-0bbf-4f4e-b068-f5b75326d34e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\services\helpers">
+      <UniqueIdentifier>{840abc83-b4f7-4096-adae-dfba3fab303d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\services\problemConverters">
+      <UniqueIdentifier>{3cbfc4f2-4819-4170-9ef9-7963704895e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\problemConverters">
+      <UniqueIdentifier>{0a5716d3-4552-4e22-8e07-86ac75765abb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\models\geometrics">
+      <UniqueIdentifier>{3a16509e-e3d5-419d-8f79-cac2748a39a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\models\geometrics">
+      <UniqueIdentifier>{334ebca5-c6df-4955-a1ac-18f1d319275d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BananaFacet.cpp">
+      <Filter>Quelldateien\models\facets</Filter>
+    </ClCompile>
+    <ClCompile Include="RasterService.cpp">
+      <Filter>Quelldateien\services\rasters</Filter>
+    </ClCompile>
+    <ClCompile Include="RasterResult.cpp">
+      <Filter>Quelldateien\models\results</Filter>
+    </ClCompile>
+    <ClCompile Include="MathHelper.cpp">
+      <Filter>Quelldateien\services\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryService.cpp">
+      <Filter>Quelldateien\services\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexCoverConverter.cpp">
+      <Filter>Quelldateien\problemConverters</Filter>
+    </ClCompile>
+    <ClCompile Include="RasterManager.cpp">
+      <Filter>Quelldateien\services\rasters</Filter>
+    </ClCompile>
+    <ClCompile Include="PointedBananaFacet.cpp">
+      <Filter>Quelldateien\models\facets</Filter>
+    </ClCompile>
+    <ClCompile Include="AFacetBase.cpp">
+      <Filter>Quelldateien\models\facets</Filter>
+    </ClCompile>
+    <ClCompile Include="Hexagon.cpp">
+      <Filter>Quelldateien\models\facets</Filter>
+    </ClCompile>
+    <ClCompile Include="AGeometry.cpp">
+      <Filter>Quelldateien\models\facets</Filter>
+    </ClCompile>
+    <ClCompile Include="Picture.cpp">
+      <Filter>Quelldateien\models\geometrics</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Quelldateien\models\geometrics</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLink.cpp">
+      <Filter>Quelldateien\models\geometrics</Filter>
+    </ClCompile>
+    <ClCompile Include="PointedPupilFacet.cpp">
+      <Filter>Quelldateien\models\facets</Filter>
+    </ClCompile>
+    <ClCompile Include="Square.cpp">
+      <Filter>Quelldateien\models\facets</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Quelldateien\models\facets</Filter>
+    </ClCompile>
+    <ClCompile Include="Trapeze.cpp">
+      <Filter>Quelldateien\models\facets</Filter>
+    </ClCompile>
+    <ClCompile Include="Lens.cpp">
+      <Filter>Quelldateien\models\facets</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BananaFacet.h">
+      <Filter>Headerdateien\models\facets</Filter>
+    </ClInclude>
+    <ClInclude Include="RasterService.h">
+      <Filter>Headerdateien\services\rasters</Filter>
+    </ClInclude>
+    <ClInclude Include="RasterResult.h">
+      <Filter>Headerdateien\models\results</Filter>
+    </ClInclude>
+    <ClInclude Include="MathHelper.h">
+      <Filter>Headerdateien\services\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryService.h">
+      <Filter>Headerdateien\services\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexCoverConverter.h">
+      <Filter>Headerdateien\services\problemConverters</Filter>
+    </ClInclude>
+    <ClInclude Include="RasterManager.h">
+      <Filter>Headerdateien\services\rasters</Filter>
+    </ClInclude>
+    <ClInclude Include="PointedBananaFacet.h">
+      <Filter>Headerdateien\models\facets</Filter>
+    </ClInclude>
+    <ClInclude Include="AFacetBase.h">
+      <Filter>Headerdateien\models\facets</Filter>
+    </ClInclude>
+    <ClInclude Include="AGeometry.h">
+      <Filter>Headerdateien\models\facets</Filter>
+    </ClInclude>
+    <ClInclude Include="Hexagon.h">
+      <Filter>Headerdateien\models\facets</Filter>
+    </ClInclude>
+    <ClInclude Include="Picture.h">
+      <Filter>Headerdateien\models\geometrics</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Headerdateien\models\geometrics</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLink.h">
+      <Filter>Headerdateien\models\geometrics</Filter>
+    </ClInclude>
+    <ClInclude Include="PointedPupilFacet.h">
+      <Filter>Headerdateien\models\facets</Filter>
+    </ClInclude>
+    <ClInclude Include="Square.h">
+      <Filter>Headerdateien\models\facets</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Headerdateien\models\facets</Filter>
+    </ClInclude>
+    <ClInclude Include="Trapeze.h">
+      <Filter>Headerdateien\models\facets</Filter>
+    </ClInclude>
+    <ClInclude Include="Lens.h">
+      <Filter>Headerdateien\models\facets</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
