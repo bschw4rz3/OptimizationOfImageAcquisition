@@ -1,4 +1,4 @@
-Ôªø// BSD 3 - Copyright 2023
+// BSD 3 - Copyright 2023
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 //
@@ -10,7 +10,7 @@
 // 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software 
 // without specific prior written permission.
 // 
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ‚ÄúAS IS‚Äù AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ìAS ISî AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
 // THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS 
 // BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE 
 // GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
@@ -19,8 +19,9 @@
 // 
 // Parts of this Software are based on Irrlicht Engine, zlib, libpng and IJG-Code
 
-#ifndef MonteCarloHittingSetSerivce_H
-#define MonteCarloHittingSetSerivce_H
+#ifndef GridApproachesService_H
+#define GridApproachesService_H
+
 
 #include <map>
 #include <random>
@@ -30,43 +31,36 @@
 #include "../PartCover/Picture.h"
 #include "CalculationResult.h"
 #include "CalculationHelper.h"
-#include "HittingSetDescriptionResult.h"
 
-//#include "../StefansHittingSolver/beamnrpa.h"
-
-#define ROLLOUT_SIZE 50
-#define CHANGE_COUNT 1
-
-class MonteCarloHittingSetService
+class GridApproachesService
 {
 private:
-	std::string lastBinaryCombination;
-
-private:
-	RasterManager* rasterService;
+	RasterManager* rasterManager;
 	MathHelper* mathHelper;
 	CalculationHelper* calculationHelper;
 
-	//Beamnrpa* beamnrpa;
+	std::map<Point, std::vector<Point>> pointCache;
 
-	HittingSetDescriptionResult hittingSet;
+	int index;
+	std::vector<Point> rasterCache;
 
 public:
-	MonteCarloHittingSetService(RasterManager* rasterService, MathHelper* mathHelper, CalculationHelper* calculationHelper);
-	~MonteCarloHittingSetService();
+	GridApproachesService(RasterManager* rasterService, MathHelper* mathHelper, CalculationHelper* calculationHelper);
 
-	std::string generateEmptyBinaryCombination(double rasterScale, AGeometry* facet);
-	CalculationResult calculateStep(std::string newBinaryCombination, double rasterScale, Picture* picture, AGeometry* facet);
-	std::string mutateCombination(const std::string& string, double raster_scale, Picture* picture, AGeometry* facet);
+	CalculationResult DoCalculationStep(std::vector<Point> solutionPoints, double rasterScale, Picture* picture, AGeometry* facet);
+
 	void reset();
 
 private:
-	HittingSetDescriptionResult descripeHittingSetProblem(double raster_scale, Picture* picture, AGeometry* facet);
-	std::vector<Point> getImagePoints(const std::string& currentBinaryCombination);
-	int getRandom(int from, int to);
+	Point getNextHighest(double rasterScale, Picture* picture, AGeometry* facet, std::vector<Point> surefacePoints, std::vector<Point> coveredPoints);
+
+	void createCache(double rasterScale, Picture* picture, AGeometry* facet, std::vector<Point> surefacePoints);
+	std::vector<Point> getCoveredPoints(Point point);
+	std::vector<Point> getUnusedPoints(std::vector<Point> allPoints, std::vector<Point> usedPoint);
 
 	bool isFocusValid(Point currentPosition, Picture* picture, AGeometry* facet);
+	double getRandom(double from, double to);
 };
 
-#endif
+#endif // !GreedyService_H
 

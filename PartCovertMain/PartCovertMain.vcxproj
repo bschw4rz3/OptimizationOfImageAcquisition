@@ -149,6 +149,7 @@
     <ClCompile Include="CalculationQuadResult.cpp" />
     <ClCompile Include="CalculationResult.cpp" />
     <ClCompile Include="GreedyService.cpp" />
+    <ClCompile Include="GridApproachesService.cpp" />
     <ClCompile Include="HittingSetDescriptionResult.cpp" />
     <ClCompile Include="HittingSetPoint.cpp" />
     <ClCompile Include="main.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="CalculationQuadResult.h" />
     <ClInclude Include="CalculationResult.h" />
     <ClInclude Include="GreedyService.h" />
+    <ClInclude Include="GridApproachesService.h" />
     <ClInclude Include="HittingSetDescriptionResult.h" />
     <ClInclude Include="HittingSetPoint.h" />
     <ClInclude Include="MonteCarloHittingSetService.h" />

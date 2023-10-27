@@ -102,9 +102,10 @@ int main()
     MonteCarloService monteCarloSerivce(&rasterManager, &mathHelper, &calculationHelper);
     MonteCarloHittingSetService monteCarloRolloutSerivce(&rasterManager, &mathHelper, &calculationHelper);
     QuadSortService quadSortService(&rasterManager, &mathHelper, &calculationHelper);
+    GridApproachesService gridApproachesService(&rasterManager, &mathHelper, &calculationHelper);
     
     GraphicEngine graphicEngine;
-    MyEventReceiver receiver(&graphicEngine, &bruteForceSerivce, &greedyService, &monteCarloRolloutSerivce, &monteCarloSerivce, &quadSortService, &picture, &primitive, &binarySerivce,
+    MyEventReceiver receiver(&graphicEngine, &bruteForceSerivce, &greedyService, &gridApproachesService, &monteCarloRolloutSerivce, &monteCarloSerivce, &quadSortService, &picture, &primitive, &binarySerivce,
         (AGeometry*) &bananaFacet, (AGeometry*) &pointedFacet, (AGeometry*) &hexagon, (AGeometry*) &smallPointedPupilFacet, 
         (AGeometry*) &pointedPupilFacet, (AGeometry*) &square, (AGeometry*) &pointedTriangle, (AGeometry*) &triangle, (AGeometry*) &trapeze, 
         (AGeometry*) &elipse);
@@ -117,6 +118,8 @@ int main()
     graphicEngine.addButton(GUI_ID_SEQUENCE_MONTE_CARLO, Point2D(80, 300), 100, L"Sequence Monte Carlo", L"Sequence Monte Carlo");
     graphicEngine.addButton(GUI_ID_ROLLOUT_MONTE_CARLO, Point2D(80, 330), 100, L"Rollout Monte Carlo", L"Rollout Monte Carlo");
     graphicEngine.addButton(GUI_ID_QUADSEARCH, Point2D(0, 360), 100, L"Quadsearch", L"Quadsearch");
+    graphicEngine.addButton(GUI_ID_GRID_APPROACHES, Point2D(0, 380), 100, L"Grid Approach", L"Grid Approach");
+
     graphicEngine.addButton(GUI_ID_ALL, Point2D(80, 360), 100, L"Simulate all", L"Startet unterschiedliche Formen mit allen Algrithmen");
 
     graphicEngine.addButton(GUI_ID_FACET_BUTTON, Point2D(80, 120), 60, L"Banana Facet", L"Banana Facet");

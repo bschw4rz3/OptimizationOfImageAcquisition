@@ -595,11 +595,11 @@ void QuadSortService::preanalysis(double rasterScale, AGeometry* facet)
 		    this->corners = this->getCorners(facet, rasterScale, angleDetectionRadius);
 	    }  
 
-		this->contourMarker = this->getMinYWithSmallestX(surefacePoints);
+		this->contourMarker = this->calculationHelper->getMinYWithSmallestX(surefacePoints);
 
 	    if(!this->corners.empty())
 	    {
-		    this->topLeftCorner = this->getMinYWithSmallestX(this->corners);
+		    this->topLeftCorner = this->calculationHelper->getMinYWithSmallestX(this->corners);
 	    }
 	}
 }
@@ -630,86 +630,6 @@ void QuadSortService::createCache(double rasterScale, Picture* picture, AGeometr
             this->pointCache[currentPoint] = coveredPoints;
         }
     }
-}
-
-Point QuadSortService::getMinY(std::vector<Point> surfacePoints)
-{
-    Point minY(0, FLT_MAX);
-
-    for (int i = 0; i < surfacePoints.size(); i++)
-    {
-        if (minY.y > surfacePoints[i].y)
-        {
-            minY = surfacePoints[i];
-        }
-    }
-
-    return minY;
-}
-
-Point QuadSortService::getMinX(std::vector<Point> surfacePoints)
-{
-    Point minX(FLT_MAX, 0);
-
-    for (int i = 0; i < surfacePoints.size(); i++)
-    {
-        if (minX.x > surfacePoints[i].x)
-        {
-            minX = surfacePoints[i];
-        }
-    }
-
-    return minX;
-}
-
-Point QuadSortService::getMaxX(std::vector<Point> surfacePoints)
-{
-    Point maxX(FLT_MIN, 0);
-
-    for (int i = 0; i < surfacePoints.size(); i++)
-    {
-        if (maxX.x < surfacePoints[i].x)
-        {
-            maxX = surfacePoints[i];
-        }
-    }
-
-    return maxX;
-}
-
-Point QuadSortService::getMaxY(std::vector<Point> surfacePoints)
-{
-    Point maxY(0, FLT_MIN);
-
-    for (int i = 0; i < surfacePoints.size(); i++)
-    {
-        if (maxY.y < surfacePoints[i].y)
-        {
-            maxY = surfacePoints[i];
-        }
-    }
-
-    return maxY;
-}
-
-Point QuadSortService::getMinYWithSmallestX(std::vector<Point> surfacePoints)
-{
-    Point minY(0, FLT_MAX);
-
-    for (int i = 0; i < surfacePoints.size(); i++)
-    {
-        if (minY.y > surfacePoints[i].y)
-        {
-            minY = surfacePoints[i];
-        }
-
-        if (this->mathHelper->equals(minY.y, surfacePoints[i].y, DOUBLE_TOLERANCE) && minY.x > surfacePoints[i].x)
-        {
-            minY = surfacePoints[i];
-        }
-    }
-
-    return minY;
 }
 
 double QuadSortService::calculateCoveredScore(Picture* picture, AGeometry* facet, double rasterScale, std::vector<Point> solutionPoints)

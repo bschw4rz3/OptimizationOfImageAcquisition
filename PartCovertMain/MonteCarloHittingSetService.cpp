@@ -34,12 +34,12 @@ MonteCarloHittingSetService::MonteCarloHittingSetService(RasterManager* rasterSe
 	this->mathHelper = mathHelper;
 	this->calculationHelper = calculationHelper;	
 
-	this->beamnrpa = new Beamnrpa();
+	//this->beamnrpa = new Beamnrpa();
 }
 
 MonteCarloHittingSetService::~MonteCarloHittingSetService()
 {
-	delete this->beamnrpa;	
+	//delete this->beamnrpa;	
 }
 
 std::string MonteCarloHittingSetService::generateEmptyBinaryCombination(double rasterScale, AGeometry* facet)

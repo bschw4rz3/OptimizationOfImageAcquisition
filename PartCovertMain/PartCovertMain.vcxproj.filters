@@ -93,6 +93,9 @@
     <ClCompile Include="HittingSetPoint.cpp">
       <Filter>Quelldateien\Results\HittingSet</Filter>
     </ClCompile>
+    <ClCompile Include="GridApproachesService.cpp">
+      <Filter>Quelldateien\Calculations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\lib\Irrlicht.dll">
@@ -144,6 +147,9 @@
     </ClInclude>
     <ClInclude Include="SimulationResult.h">
       <Filter>Headerdateien\Results</Filter>
+    </ClInclude>
+    <ClInclude Include="GridApproachesService.h">
+      <Filter>Headerdateien\Calculations</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

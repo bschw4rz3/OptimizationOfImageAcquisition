@@ -113,3 +113,83 @@ bool CalculationHelper::isRasterPoint(Point point)
 
     return isValidX && isValidY;
 }
+
+Point CalculationHelper::getMinYWithSmallestX(std::vector<Point> surfacePoints)
+{
+    Point minY(0, FLT_MAX);
+
+    for (int i = 0; i < surfacePoints.size(); i++)
+    {
+        if (minY.y > surfacePoints[i].y)
+        {
+            minY = surfacePoints[i];
+        }
+
+        if (this->mathHelper->equals(minY.y, surfacePoints[i].y, DOUBLE_TOLERANCE) && minY.x > surfacePoints[i].x)
+        {
+            minY = surfacePoints[i];
+        }
+    }
+
+    return minY;
+}
+
+Point CalculationHelper::getMinY(std::vector<Point> surfacePoints)
+{
+    Point minY(0, FLT_MAX);
+
+    for (int i = 0; i < surfacePoints.size(); i++)
+    {
+        if (minY.y > surfacePoints[i].y)
+        {
+            minY = surfacePoints[i];
+        }
+    }
+
+    return minY;
+}
+
+Point CalculationHelper::getMinX(std::vector<Point> surfacePoints)
+{
+    Point minX(FLT_MAX, 0);
+
+    for (int i = 0; i < surfacePoints.size(); i++)
+    {
+        if (minX.x > surfacePoints[i].x)
+        {
+            minX = surfacePoints[i];
+        }
+    }
+
+    return minX;
+}
+
+Point CalculationHelper::getMaxX(std::vector<Point> surfacePoints)
+{
+    Point maxX(FLT_MIN, 0);
+
+    for (int i = 0; i < surfacePoints.size(); i++)
+    {
+        if (maxX.x < surfacePoints[i].x)
+        {
+            maxX = surfacePoints[i];
+        }
+    }
+
+    return maxX;
+}
+
+Point CalculationHelper::getMaxY(std::vector<Point> surfacePoints)
+{
+    Point maxY(0, FLT_MIN);
+
+    for (int i = 0; i < surfacePoints.size(); i++)
+    {
+        if (maxY.y < surfacePoints[i].y)
+        {
+            maxY = surfacePoints[i];
+        }
+    }
+
+    return maxY;
+}

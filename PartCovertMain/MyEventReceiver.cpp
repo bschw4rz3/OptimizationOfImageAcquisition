@@ -47,7 +47,7 @@ std::string enStr[] {
     stringify( GUI_ID_ALL )
 };
 
-MyEventReceiver::MyEventReceiver(GraphicEngine* graphicEngine, BruteForceService* bruteForceService, GreedyService* greedyService, MonteCarloHittingSetService* monteCarloRolloutService, 
+MyEventReceiver::MyEventReceiver(GraphicEngine* graphicEngine, BruteForceService* bruteForceService, GreedyService* greedyService, GridApproachesService* gridApproachesService, MonteCarloHittingSetService* monteCarloRolloutService, 
                                  MonteCarloService* monteCarloSerivce,  QuadSortService* quadSortService, Picture* picture, BananaPrimitive* primitive, BinaryService* binaryService, AGeometry* bananaFacet, AGeometry* pointFacet,
                                  AGeometry* hexagon, AGeometry* smallPupilFacet, AGeometry* pointedPupilFacet, AGeometry* square, AGeometry* pointedTriangle, AGeometry* triangle, AGeometry* trapeze, AGeometry* elipse)
 {
@@ -59,6 +59,7 @@ MyEventReceiver::MyEventReceiver(GraphicEngine* graphicEngine, BruteForceService
     this->monteCarloSerivce = monteCarloSerivce;
     this->monteCarloRolloutSerivce = monteCarloRolloutService;
     this->quadSortService = quadSortService;
+    this->gridApproachesService = gridApproachesService;
 
     this->facet = NULL;
     this->picture = picture;
@@ -119,7 +120,7 @@ void MyEventReceiver::startSimulation()
     std::vector<s32> formIdList{ GUI_ID_ELIPSE_BUTTON/*, GUI_ID_POINTED_TRIANGLE_BUTTON ,GUI_ID_HEXAGON_BUTTON, GUI_ID_TRIANGLE_BUTTON,*/
     	/*GUI_ID_TRAPEZE_BUTTON, GUI_ID_SQUARE_BUTTON*/ };
 
-	std::vector<s32> algorithmIdList{GUI_ID_QUADSEARCH, GUI_ID_GREEDY, GUI_ID_FORCE, GUI_ID_SEQUENCE_MONTE_CARLO, GUI_ID_ROLLOUT_MONTE_CARLO };
+	std::vector<s32> algorithmIdList{GUI_ID_QUADSEARCH, GUI_ID_GREEDY, GUI_ID_FORCE, GUI_ID_SEQUENCE_MONTE_CARLO, GUI_ID_ROLLOUT_MONTE_CARLO, GUI_ID_GRID_APPROACHES };
 
     std::vector<SimulationResult> result;
     
@@ -157,6 +158,7 @@ void MyEventReceiver::startSimulation()
             this->monteCarloRolloutSerivce->reset();
             this->quadSortService->reset();
             this->greedyService->reset();
+            this->gridApproachesService->reset();
 	    }
     }
 
@@ -170,6 +172,7 @@ void MyEventReceiver::startAlgorithm(s32 algorithmId)
     this->monteCarloRolloutSerivce->reset();
     this->quadSortService->reset();
     this->greedyService->reset();
+    this->gridApproachesService->reset();
 
 	if (algorithmId == GUI_ID_GREEDY)
 	{
@@ -190,6 +193,10 @@ void MyEventReceiver::startAlgorithm(s32 algorithmId)
 	else if (algorithmId == GUI_ID_QUADSEARCH)
 	{
 		this->currentAlgorithmThread = std::thread(&MyEventReceiver::quadsearch, this);
+	}
+	else if (algorithmId == GUI_ID_GRID_APPROACHES)
+	{
+		this->currentAlgorithmThread = std::thread(&MyEventReceiver::gridApproachesSolution, this);
 	}
 	else if(algorithmId == GUI_ID_ALL)
 	{
@@ -264,6 +271,7 @@ bool MyEventReceiver::OnEvent(const SEvent& event)
             {
             case GUI_ID_QUIT_BUTTON:
                 this->isAbbord = true;
+                this->onJoinTask();
                 this->context->device->closeDevice();
                 return true;
             case GUI_ID_FORCE:
@@ -271,6 +279,7 @@ bool MyEventReceiver::OnEvent(const SEvent& event)
             case GUI_ID_SEQUENCE_MONTE_CARLO:
             case GUI_ID_ROLLOUT_MONTE_CARLO:
             case GUI_ID_QUADSEARCH:
+			case GUI_ID_GRID_APPROACHES:
 			case GUI_ID_ALL:
             {
                 if (!this->isRunning)
@@ -421,6 +430,47 @@ void MyEventReceiver::greedySolution()
         try
         {
             result = this->greedyService->DoCalculationStep(resultList, rasterScale, picture, (AGeometry*) this->facet);
+        }
+        catch (std::exception& e)
+        {
+            std::string s(e.what());
+            std::wstring errorMessage(s.begin(), s.end());
+
+            this->graphicEngine->setGUIElementText(GUI_ID_LABEL_ERROR_MESSAGE, errorMessage.c_str());
+            break;
+        }
+        
+        resultList = result.coveredPoints;
+
+        bestCoveredPoints = result.coveredPoints;
+        bestScore = result.coverRate;
+        lowestImages = result.imageCount;
+
+        this->onFoundSolution(bestCoveredPoints.size(), bestScore, lowestImages);
+        this->primitive->setOptimalSolution(resultList);
+
+        this->onProgress();
+    }
+
+    this->isRunning = false;
+}
+
+void MyEventReceiver::gridApproachesSolution()
+{
+    double rasterScale = this->primitive->rasterScale;
+
+    double bestScore = 0;
+    int lowestImages = 9999999999999;
+    std::vector<Point> bestCoveredPoints;
+
+    std::vector<Point> resultList;
+    CalculationResult result;
+
+    while (result.coverRate != 1.0 && !this->isAbbord)
+    {
+        try
+        {
+            result = this->gridApproachesService->DoCalculationStep(resultList, rasterScale, picture, (AGeometry*) this->facet);
         }
         catch (std::exception& e)
         {

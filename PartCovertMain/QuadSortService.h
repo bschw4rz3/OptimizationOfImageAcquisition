@@ -64,13 +64,6 @@ public:
 private:
 	void createCache(double rasterScale, Picture* picture, AGeometry* facet, std::vector<Point> surfacePoints);
 
-	Point getMinY(std::vector<Point> surfacePoints);
-	Point getMinX(std::vector<Point> surfacePoints);
-	Point getMaxX(std::vector<Point> surfacePoints);
-	Point getMaxY(std::vector<Point> surfacePoints);
-
-	Point getMinYWithSmallestX(std::vector<Point> surfacePoints);
-
 	void addPointsIfNotExists(std::vector<Point>* possiblePointList, std::vector<Point> coveredPoints);
 
 	CalculationQuadResult fillHoles(std::vector<Point> solutionPoints, std::vector<Point> possibleStartPoints, double rasterScale, Picture* picture, AGeometry* facet);

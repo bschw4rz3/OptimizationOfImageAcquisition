@@ -24,7 +24,8 @@
 
 #include <activation.h>
 #include "SimulationResult.h"
-#include<iostream>
+#include <iostream>
+#include <fstream>
 
 #include <thread>
 #include <future>
@@ -41,6 +42,7 @@
 
 #include "BruteForceService.h"
 #include "MonteCarloService.h"
+#include "GridApproachesService.h"
 #include "GreedyService.h"
 #include "MonteCarloHittingSetService.h"
 #include "QuadSortService.h"
@@ -70,6 +72,7 @@ enum {
     GUI_ID_TRIANGLE_BUTTON,
     GUI_ID_TRAPEZE_BUTTON,
     GUI_ID_ELIPSE_BUTTON,
+    GUI_ID_GRID_APPROACHES,
     GUI_ID_ALL
 };
 
@@ -81,6 +84,7 @@ private:
     BruteForceService* bruteForceService;
     BinaryService* binaryService;
     GreedyService* greedyService;
+    GridApproachesService* gridApproachesService;
     MonteCarloService* monteCarloSerivce;
     MonteCarloHittingSetService* monteCarloRolloutSerivce;
     QuadSortService* quadSortService;
@@ -113,7 +117,7 @@ private:
     int imageCountOfLastRun;
 
 public:
-    MyEventReceiver(GraphicEngine* graphic_engine, BruteForceService* brute_force_service, GreedyService* greedy_service, MonteCarloHittingSetService* monte_carlo_hitting_set_service, 
+    MyEventReceiver(GraphicEngine* graphic_engine, BruteForceService* brute_force_service, GreedyService* greedy_service, GridApproachesService* gridApproachesService, MonteCarloHittingSetService* monte_carlo_hitting_set_service, 
         MonteCarloService* monte_carlo_service, QuadSortService* quad_sort_service, Picture* picture, BananaPrimitive* primitive, BinaryService* binary_service, AGeometry* geometry, 
         AGeometry* pointed_facet, AGeometry* hexagon, AGeometry* small_pointed_pupil_facet, AGeometry* pointed_pupil_facet, AGeometry* square, AGeometry* pointedTriangle, AGeometry* triangle, 
         AGeometry* trapeze, AGeometry* elipse);
@@ -133,13 +137,14 @@ protected:
     void monteStepSecThread(std::string binaryCombination, double rasterScale, Picture* picture, AGeometry* facet, CalculationResult* result);
     void quadSearchThread(std::string binaryCombination, double rasterScale, Picture* picture, AGeometry* facet, CalculationResult* result);
     void monteStepRollThread(std::string binaryCombination, double rasterScale, Picture* picture, AGeometry* facet, CalculationResult* result);
-
+    
 private:
     void forceSolution(int maxThreadCount);
     void greedySolution();
     void quadsearch();
     void sequenceMonteCarlo(int maxThreadCount);
     void rolloutMonteCarlo(int maxThreadCount);
+    void gridApproachesSolution();
 
     IGUIStaticText* addLabel(Point2D position, wstring text, double value);
     const wchar_t* getLabelText(wstring text, double value);

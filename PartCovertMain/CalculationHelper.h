@@ -42,6 +42,11 @@ private:
 public:
 	CalculationHelper(MathHelper* mathHelper);
 
+	Point getMinY(std::vector<Point> surfacePoints);
+	Point getMinX(std::vector<Point> surfacePoints);
+	Point getMaxX(std::vector<Point> surfacePoints);
+	Point getMaxY(std::vector<Point> surfacePoints);
+
 	bool contains(std::vector<Point> list, Point point);
 	bool contains(std::vector<Point>* list, Point point);
 	
@@ -51,6 +56,8 @@ public:
 	PointResult countPoints(const std::vector<Point>& vector);
 
 	bool isRasterPoint(Point point);
+
+	Point getMinYWithSmallestX(std::vector<Point> surfacePoints);
 };
 
 #endif
