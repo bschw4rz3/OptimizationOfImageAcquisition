@@ -33,6 +33,9 @@ CalculationResult GridApproachesService::DoCalculationStep(std::vector<Point> so
     std::vector<Point> surefacePoints = this->rasterManager->getSurfaceRasterCash(rasterScale, facet);
     std::vector<Point> points = this->getUnusedPoints(surefacePoints, solutionPoints);
 
+    double minCamWidth = picture->width*0.9;
+    double minCamHeight = picture->height*0.9;
+
     // Create raster
     if(this->rasterCache.size() == 0)
     {
@@ -41,11 +44,11 @@ CalculationResult GridApproachesService::DoCalculationStep(std::vector<Point> so
         Point minPoint (this->calculationHelper->getMinX(surefacePoints).x, this->calculationHelper->getMinY(surefacePoints).y);
         Point maxPoint (this->calculationHelper->getMaxX(surefacePoints).x, this->calculationHelper->getMaxY(surefacePoints).y);
 
-        for(double x = minPoint.x; x < maxPoint.x ; x+=picture->width)
+        for(double x = minPoint.x - minCamWidth/10 ; x < maxPoint.x + minCamWidth/10 ; x+=minCamWidth)
         {
-            for(double y = minPoint.y; y < maxPoint.y ; y+=picture->height)
+            for(double y = minPoint.y - minCamHeight/10 ; y < maxPoint.y + minCamHeight/10 ; y+=minCamHeight)
             {
-                this->rasterCache.push_back(Point(x + picture->width/2, y + picture->height/2));
+                this->rasterCache.push_back(Point(x + minCamWidth/2, y + minCamHeight/2));
             }
         }
     }
@@ -56,27 +59,28 @@ CalculationResult GridApproachesService::DoCalculationStep(std::vector<Point> so
     }
 
     Point currentRasterPosition = this->rasterCache[this->index];
-    Point currentPoint(currentRasterPosition.x, currentRasterPosition.y);
+    Point currentPoint(0, 0);
     
     int generateImageIndex = 0;
-    solutionPoints.push_back(currentPoint);
+    solutionPoints.push_back(Point(0,0));
 
     std::vector<Point> coveredPoints;
 
-    while(!this->isFocusValid(currentPoint, picture, facet))
+    Point areaMax(currentRasterPosition.x + minCamWidth/2, currentRasterPosition.y + minCamHeight/2);
+    Point areaMin(currentRasterPosition.x - minCamWidth/2, currentRasterPosition.y - minCamHeight/2);
+
+    while(!(this->isFocusValid(currentPoint, picture, facet) && this->covertsAllSegmentPoints(currentPoint, Point(picture->width, picture->height), surefacePoints, areaMax, areaMin)))
     {
-        if(generateImageIndex > 1000)
+        if(generateImageIndex > 10000)
         {
             throw std::exception("Es konnte keine Position gefunden werden...");
         }
 
-        double randomX = this->getRandom(currentRasterPosition.x - picture->width, currentRasterPosition.x + picture->width);
-        double randomY = this->getRandom(currentRasterPosition.y - picture->height, currentRasterPosition.y + picture->height);
+        double randomX = this->getRandom(currentRasterPosition.x - minCamWidth, currentRasterPosition.x + minCamWidth);
+        double randomY = this->getRandom(currentRasterPosition.y - minCamHeight, currentRasterPosition.y + minCamHeight);
         
         currentPoint = Point(randomX, randomY);
         solutionPoints[solutionPoints.size()-1] = currentPoint;
-        
-        coveredPoints = this->rasterManager->calculateCoveredPoints(picture, facet, rasterScale, solutionPoints);
 
         generateImageIndex++;
     }
@@ -101,38 +105,54 @@ CalculationResult GridApproachesService::DoCalculationStep(std::vector<Point> so
     return CalculationResult(score, solutionPoints);
 }
 
-void GridApproachesService::reset()
+bool GridApproachesService::covertsAllSegmentPoints(Point currentPoint, Point imageDimensions, std::vector<Point> surefacePoints, Point areaMax, Point areaMin)
 {
-    this->pointCache = std::map<Point, std::vector<Point>>();
-}
+    bool allCovered = true;
 
-Point GridApproachesService::getNextHighest(double rasterScale, Picture* picture, AGeometry* facet, std::vector<Point> surefacePoints, std::vector<Point> coveredPoints)
-{
-    this->createCache(rasterScale, picture, facet, surefacePoints);
+    static Point forPosition(-99999, -99999);
+    static std::vector<Point> pointCache;
 
-    int max = 0;
-    Point maxPoint;
-
-    for (int i = 0; i < surefacePoints.size(); i++)
+    if(forPosition.x != areaMax.x || forPosition.y != areaMax.y)
     {
-        Point currentPoint = surefacePoints[i];
-        std::vector<Point> pointList = this->getCoveredPoints(currentPoint);
-        std::vector<Point> uncoveredPoint = this->getUnusedPoints(pointList, coveredPoints);
+        pointCache.clear();
 
-        if (uncoveredPoint.size() > max && 
-            this->isFocusValid(currentPoint, picture, facet))
+        for (int i = 0; i < surefacePoints.size(); i++)
         {
-            max = uncoveredPoint.size();
-            maxPoint = currentPoint;
+            Point currentSurfacePoint = surefacePoints[i];
+
+            if(areaMin.x <= currentSurfacePoint.x && currentSurfacePoint.x <= areaMax.x && 
+               areaMin.y <= currentSurfacePoint.y && currentSurfacePoint.y <= areaMax.y)
+            {
+                pointCache.push_back(currentSurfacePoint);
+            }
+        }
+
+        forPosition = areaMax;
+    }
+
+    for (int i = 0; i < pointCache.size(); i++)
+    {
+        Point currentSurfacePoint = pointCache[i];
+
+        if(!(currentPoint.x - imageDimensions.x/2 <= currentSurfacePoint.x && currentSurfacePoint.x <= currentPoint.x + imageDimensions.x/2 && 
+             currentPoint.y - imageDimensions.y/2 <= currentSurfacePoint.y && currentSurfacePoint.y <= currentPoint.y + imageDimensions.y/2))
+        {
+            allCovered = false;
+            break;
         }
     }
 
-    if (max == 0)
+    if(allCovered)
     {
-        throw std::exception("GreedyExtendedService: Kein Punkt gefunden welcher eine abdeckende wirkung hat...");
+        this->conScore += pointCache.size();
     }
 
-    return maxPoint;
+    return allCovered;
+}
+
+void GridApproachesService::reset()
+{
+    this->pointCache = std::map<Point, std::vector<Point>>();
 }
 
 void GridApproachesService::createCache(double rasterScale, Picture* picture, AGeometry* facet, std::vector<Point> surefacePoints)

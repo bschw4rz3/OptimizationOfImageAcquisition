@@ -44,6 +44,8 @@ private:
 	int index;
 	std::vector<Point> rasterCache;
 
+	double conScore;
+
 public:
 	GridApproachesService(RasterManager* rasterService, MathHelper* mathHelper, CalculationHelper* calculationHelper);
 
@@ -52,14 +54,14 @@ public:
 	void reset();
 
 private:
-	Point getNextHighest(double rasterScale, Picture* picture, AGeometry* facet, std::vector<Point> surefacePoints, std::vector<Point> coveredPoints);
-
 	void createCache(double rasterScale, Picture* picture, AGeometry* facet, std::vector<Point> surefacePoints);
 	std::vector<Point> getCoveredPoints(Point point);
 	std::vector<Point> getUnusedPoints(std::vector<Point> allPoints, std::vector<Point> usedPoint);
 
 	bool isFocusValid(Point currentPosition, Picture* picture, AGeometry* facet);
 	double getRandom(double from, double to);
+
+	bool covertsAllSegmentPoints(Point currentPoint, Point imageDimensions, std::vector<Point> surefacePoints, Point areaMax, Point areaMin);
 };
 
 #endif // !GreedyService_H

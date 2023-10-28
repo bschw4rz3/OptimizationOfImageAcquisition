@@ -42,7 +42,7 @@ int main()
 {
     QuadSortService::angleDetectionRadius = 0.65;
     QuadSortService::minAngle = 135;
-    AGeometry::contourResolution = 0.5;
+    AGeometry::contourResolution = 0.25;
     RasterService::rasterResolution = 0.5;
 
     PointedPupilFacet pointedPupilFacet(16, 10);
