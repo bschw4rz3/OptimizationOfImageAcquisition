@@ -185,6 +185,10 @@ void GraphicEngine::renderPrimitive(IGeometry* geometry)
     for (int i = 0; i < this->primitiveList.size(); i++)
     {
         IPrimitiveDraw* entry = this->primitiveList[i];
-        entry->render(this, geometry);
+
+        if(entry != NULL)
+        {
+            entry->render(this, geometry);
+        }
     }
 }

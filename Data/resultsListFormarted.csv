@@ -1,0 +1,145 @@
+Algorithmus&Geometrie&Zeit(ms)&Bilderanzahl&Abdeckungsrate\\
+QuadPos&Elipse 1&6&5&1.000\\
+Greedy&Elipse 1&11&4&1.000\\
+Brute Force&Elipse 1&121198&3&0.424\\
+Sequence Monte-Carlo&Elipse 1&111134&10&0.992\\
+Rollout Monte-Carlo&Elipse 1&28&5&1.000\\
+Gridded Random&Elipse 1&3&5&1.000\\
+QuadPos&Isosceles triangle 1&10&9&1.000\\
+Greedy&Isosceles triangle 1&398&12&0.968\\
+Brute Force&Isosceles triangle 1&111218&3&0.390\\
+Sequence Monte-Carlo&Isosceles triangle 1&62690&45&1.000\\
+Rollout Monte-Carlo&Isosceles triangle 1&20332&14&0.968\\
+Gridded Random&Isosceles triangle 1&3&1&0.107\\
+QuadPos&Hexagon 1&57&23&1.000\\
+Greedy&Hexagon 1&6593&36&1.000\\
+Brute Force&Hexagon 1&115698&3&0.186\\
+Sequence Monte-Carlo&Hexagon 1&46530&109&0.994\\
+Rollout Monte-Carlo&Hexagon 1&1303&37&1.000\\
+Gridded Random&Hexagon 1&3&37&1.000\\
+QuadPos&Isosceles triangle 2&46&10&1.000\\
+Greedy&Isosceles triangle 2&1992&16&1.000\\
+Brute Force&Isosceles triangle 2&112016&3&0.344\\
+Sequence Monte-Carlo&Isosceles triangle 2&46036&79&1.000\\
+Rollout Monte-Carlo&Isosceles triangle 2&294&16&1.000\\
+Gridded Random&Isosceles triangle 2&3&16&1.000\\
+QuadPos&Trapeze 1&28&10&1.000\\
+Greedy&Trapeze 1&1334&15&1.000\\
+Brute Force&Trapeze 1&112643&3&0.292\\
+Sequence Monte-Carlo&Trapeze 1&39642&79&1.000\\
+Rollout Monte-Carlo&Trapeze 1&248&16&1.000\\
+Gridded Random&Trapeze 1&2&16&1.000\\
+QuadPos&Square 1&26&12&1.000\\
+Greedy&Square 1&3619&18&1.000\\
+Brute Force&Square 1&107064&3&0.199\\
+Sequence Monte-Carlo&Square 1&44264&122&1.000\\
+Rollout Monte-Carlo&Square 1&809&24&1.000\\
+Gridded Random&Square 1&3&24&1.000\\
+QuadPos&Car Door 1&5&3&1.000\\
+Greedy&Car Door 1&34&4&1.000\\
+Brute Force&Car Door 1&121265&3&0.528\\
+Sequence Monte-Carlo&Car Door 1&96094&18&1.000\\
+Rollout Monte-Carlo&Car Door 1&52&5&1.000\\
+Gridded Random&Car Door 1&2&5&1.000\\
+QuadPos&Elipse 2&8&13&1.000\\
+Greedy&Elipse 2&383&24&1.000\\
+Brute Force&Elipse 2&127073&3&0.116\\
+Sequence Monte-Carlo&Elipse 2&72529&43&0.981\\
+Rollout Monte-Carlo&Elipse 2&320&23&1.000\\
+Gridded Random&Elipse 2&12&17&1.000\\
+QuadPos&Isosceles triangle 3&12&8&1.000\\
+Greedy&Isosceles triangle 3&303&10&0.982\\
+Brute Force&Isosceles triangle 3&116670&3&0.493\\
+Sequence Monte-Carlo&Isosceles triangle 3&68813&34&1.000\\
+Rollout Monte-Carlo&Isosceles triangle 3&19683&12&0.982\\
+Gridded Random&Isosceles triangle 3&5&1&0.104\\
+QuadPos&Hexagon 2&19&11&1.000\\
+Greedy&Hexagon 2&472&14&1.000\\
+Brute Force&Hexagon 2&119287&3&0.324\\
+Sequence Monte-Carlo&Hexagon 2&50751&69&1.000\\
+Rollout Monte-Carlo&Hexagon 2&268&15&1.000\\
+Gridded Random&Hexagon 2&3&15&1.000\\
+QuadPos&Isosceles triangle 4&6&3&1.000\\
+Greedy&Isosceles triangle 4&55&5&1.000\\
+Brute Force&Isosceles triangle 4&113166&3&0.984\\
+Sequence Monte-Carlo&Isosceles triangle 4&99188&13&1.000\\
+Rollout Monte-Carlo&Isosceles triangle 4&108&5&1.000\\
+Gridded Random&Isosceles triangle 4&4&5&1.000\\
+QuadPos&Trapeze 2&23&10&1.000\\
+Greedy&Trapeze 2&401&9&1.000\\
+Brute Force&Trapeze 2&109928&3&0.477\\
+Sequence Monte-Carlo&Trapeze 2&52239&54&1.000\\
+Rollout Monte-Carlo&Trapeze 2&110&11&1.000\\
+Gridded Random&Trapeze 2&3&11&1.000\\
+QuadPos&Square 2&32&16&1.000\\
+Greedy&Square 2&4697&21&1.000\\
+Brute Force&Square 2&105714&3&0.208\\
+Sequence Monte-Carlo&Square 2&31094&126&1.000\\
+Rollout Monte-Carlo&Square 2&520&24&1.000\\
+Gridded Random&Square 2&4&24&1.000\\
+QuadPos&Car Door 2&13&6&1.000\\
+Greedy&Car Door 2&132&7&1.000\\
+Brute Force&Car Door 2&113000&3&0.328\\
+Sequence Monte-Carlo&Car Door 2&71783&34&1.000\\
+Rollout Monte-Carlo&Car Door 2&80&10&1.000\\
+Gridded Random&Car Door 2&3&10&1.000\\
+QuadPos&Elipse 3&6&7&1.000\\
+Greedy&Elipse 3&33&10&1.000\\
+Brute Force&Elipse 3&126278&3&0.264\\
+Sequence Monte-Carlo&Elipse 3&105365&17&0.995\\
+Rollout Monte-Carlo&Elipse 3&66&11&1.000\\
+Gridded Random&Elipse 3&5&8&1.000\\
+QuadPos&Hexagon 3&3&2&1.000\\
+Greedy&Hexagon 3&7&2&1.000\\
+Brute Force&Hexagon 3&125514&1&0.538\\
+Sequence Monte-Carlo&Hexagon 3&102507&16&1.000\\
+Rollout Monte-Carlo&Hexagon 3&32&3&1.000\\
+Gridded Random&Hexagon 3&4&3&1.000\\
+QuadPos&Trapeze 3&6&3&1.000\\
+Greedy&Trapeze 3&46&4&1.000\\
+Brute Force&Trapeze 3&121445&2&0.716\\
+Sequence Monte-Carlo&Trapeze 3&81637&22&1.000\\
+Rollout Monte-Carlo&Trapeze 3&51&4&1.000\\
+Gridded Random&Trapeze 3&3&4&1.000\\
+QuadPos&Square 3&12&4&1.000\\
+Greedy&Square 3&230&6&1.000\\
+Brute Force&Square 3&114129&2&0.480\\
+Sequence Monte-Carlo&Square 3&64310&35&1.000\\
+Rollout Monte-Carlo&Square 3&51&6&1.000\\
+Gridded Random&Square 3&2&6&1.000\\
+QuadPos&Car Door 3&23&12&1.000\\
+Greedy&Car Door 3&864&16&1.000\\
+Brute Force&Car Door 3&112869&3&0.182\\
+Sequence Monte-Carlo&Car Door 3&46225&65&1.000\\
+Rollout Monte-Carlo&Car Door 3&181&15&1.000\\
+Gridded Random&Car Door 3&4&15&1.000\\
+QuadPos&Elipse 4&2&2&1.000\\
+Greedy&Elipse 4&6&3&1.000\\
+Brute Force&Elipse 4&129854&2&0.551\\
+Sequence Monte-Carlo&Elipse 4&98654&10&1.000\\
+Rollout Monte-Carlo&Elipse 4&8&3&1.000\\
+Gridded Random&Elipse 4&3&2&1.000\\
+QuadPos&Hexagon 4&6&4&1.000\\
+Greedy&Hexagon 4&99&6&1.000\\
+Brute Force&Hexagon 4&103823&2&0.517\\
+Sequence Monte-Carlo&Hexagon 4&83993&21&1.000\\
+Rollout Monte-Carlo&Hexagon 4&70&6&1.000\\
+Gridded Random&Hexagon 4&4&4&0.163\\
+QuadPos&Trapeze 4&3&3&1.000\\
+Greedy&Trapeze 4&25&4&1.000\\
+Brute Force&Trapeze 4&103874&2&0.716\\
+Sequence Monte-Carlo&Trapeze 4&78910&27&1.000\\
+Rollout Monte-Carlo&Trapeze 4&39&4&1.000\\
+Gridded Random&Trapeze 4&2&4&1.000\\
+QuadPos&Square 4&132&35&1.000\\
+Greedy&Square 4&19870&27&0.877\\
+Brute Force&Square 4&92300&3&0.108\\
+Sequence Monte-Carlo&Square 4&33565&238&0.999\\
+Rollout Monte-Carlo&Square 4&2818&60&1.000\\
+Gridded Random&Square 4&3&60&1.000\\
+QuadPos&Car Door 4&88&28&1.000\\
+Greedy&Car Door 4&11169&42&1.000\\
+Brute Force&Car Door 4&94277&3&0.096\\
+Sequence Monte-Carlo&Car Door 4&32940&161&0.996\\
+Rollout Monte-Carlo&Car Door 4&2384&50&1.000\\
+Gridded Random&Car Door 4&80&42&1.000\\

@@ -34,6 +34,7 @@
 #include "../PartCover/Hexagon.h"
 #include "../PartCover/PointedPupilFacet.h"
 #include "../PartCover/Square.h"
+#include "../PartCover/CarDoor.h"
 #include "../PartCover/Triangle.h"
 #include "../PartCover/Trapeze.h"
 #include "../PartCover/Lens.h"
@@ -50,37 +51,41 @@ int main()
     PointedBananaFacet pointedFacet(24, 6, 15, 3, false);
     PointedPupilFacet smallPointedPupilFacet(7, 4);
 
-    // Silvestermessung
-    // Hexagon hexagon(16, 14); // 111.8 und 136.4 Grad // 184.8
-    // Square square(16, 8); // 128
-    // Triangle pointedTriangle(16, 8); // 64
-    // Triangle triangle(7.8, 16); // 62.399
-    Trapeze trapeze(7.8, 16); // 78
-    // Lens elipse(24, 0, 4, 0, false); // 23.0006
+    // Silvestermessung - letze Messung 31.10.23 - 15:32
+    //Hexagon hexagon(16, 14); // 111.8 und 136.4 Grad // 184.8
+    //Square square(16, 8); // 128
+    //Triangle pointedTriangle(16, 8); // 64
+    //Triangle triangle(7.8, 16); // 62.399
+    //Trapeze trapeze(7.8, 16); // 78
+    //Lens elipse(24, 0, 4, 0, false); // 23.0006
+    //CarDoor carDoor(4, 5); // 14.5
 
-    // Messung 14.01.
-	Hexagon hexagon(10, 8); // 113.63 und 132.74 Grad // 66
-	Square square(8, 16); // 128
-	Triangle pointedTriangle(10, 10); // 50
-	Triangle triangle(3, 5); // 7.5
+    // Messung 14.01. - letze Messung 31.10.23 - 16:07
+	// Hexagon hexagon(10, 8); // 113.63 und 132.74 Grad // 66
+	// Square square(8, 16); // 128
+	// Triangle pointedTriangle(10, 10); // 50
+	// Triangle triangle(3, 5); // 7.5
 	// Trapeze trapeze(8, 10); // 50
 	// Lens elipse(30, 0, 7, 0, false); // 104.74233418387180
+    // CarDoor carDoor(8, 6); // 34.8
 
-    // Messung 14.01. - Teil 2
+    // Messung 14.01. - letze Messung 31.10.23 - 16:37
 	// Hexagon hexagon(4, 4); // 109.28.63 und 141.42 Grad // -13.199
     // Square square(5, 5); // 25
     // Trapeze trapeze(4, 5); // 12.5
-    Lens elipse(26, 0, 5, 0, false); // 43.9335
+    // Lens elipse(26, 0, 5, 0, false); // 43.9335 
+    // CarDoor carDoor(12, 10); // 87
 
-    // Messung 14.01. - Teil 3
-    // Hexagon hexagon(6, 4); // 117.7 und 124.6 Grad // 19.8
-    // Square square(18, 18); // a=324
-    // Triangle pointedTriangle(10, 10);// a=50
-    // Triangle triangle(3, 5); // 7.5
-    // Trapeze trapeze(4, 5); // 12.5
-    // Lens elipse(22, 0, 3.5, 0, false); // 14.155
-
-    double a = triangle.getArea();
+    // Messung 14.01. - Teil 3 - letze Messung 31.10.23 - 17:00
+    Hexagon hexagon(6, 4); // 117.7 und 124.6 Grad // 19.8
+    Square square(18, 18); // a=324
+    Triangle pointedTriangle(10, 10);// a=50
+    Triangle triangle(3, 5); // 7.5
+    Trapeze trapeze(4, 5); // 12.5
+    Lens elipse(22, 0, 3.5, 0, false); // 14.155
+    CarDoor carDoor(20, 18); // 261
+    
+    double a = carDoor.getArea();
 
     Picture picture(4.2, 2.8);
     picture.enableFocusPoints = true;
@@ -108,7 +113,7 @@ int main()
     MyEventReceiver receiver(&graphicEngine, &bruteForceSerivce, &greedyService, &gridApproachesService, &monteCarloRolloutSerivce, &monteCarloSerivce, &quadSortService, &picture, &primitive, &binarySerivce,
         (AGeometry*) &bananaFacet, (AGeometry*) &pointedFacet, (AGeometry*) &hexagon, (AGeometry*) &smallPointedPupilFacet, 
         (AGeometry*) &pointedPupilFacet, (AGeometry*) &square, (AGeometry*) &pointedTriangle, (AGeometry*) &triangle, (AGeometry*) &trapeze, 
-        (AGeometry*) &elipse);
+        (AGeometry*) &elipse, (AGeometry*) &carDoor);
 
     graphicEngine.initiate(L"Part Cover", Point2D(640, 480));
     graphicEngine.loadFont(L"fonthaettenschweiler.bmp");
@@ -132,6 +137,7 @@ int main()
     graphicEngine.addButton(GUI_ID_TRIANGLE_BUTTON, Point2D(80, 180), 60, L"Triangle", L"Triangle");
     graphicEngine.addButton(GUI_ID_TRAPEZE_BUTTON, Point2D(0, 240), 60, L"Trapez", L"Trapez");
     graphicEngine.addButton(GUI_ID_ELIPSE_BUTTON, Point2D(80, 240), 60, L"Ellipse", L"Ellipse");
+    graphicEngine.addButton(GUI_ID_CARDOOR_BUTTON, Point2D(0, 270), 60, L"CarDoor", L"CarDoor");
 
     graphicEngine.addLabel(GUI_ID_LABEL_RASTER_SCALE, Point2D(150, 20), 100, L"Raster scale:");
     graphicEngine.addScrollbar(GUI_ID_TRANSPARENCY_SCROLL_BAR, Point2D(150, 45), 350, 0.01, 5.0, 1.0);

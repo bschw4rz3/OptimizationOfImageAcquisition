@@ -143,6 +143,7 @@
     <ClCompile Include="AGeometry.cpp" />
     <ClCompile Include="BananaFacet.cpp" />
     <ClCompile Include="BinaryService.cpp" />
+    <ClCompile Include="CarDoor.cpp" />
     <ClCompile Include="Lens.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="Picture.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="BinaryService.h" />
     <ClInclude Include="AFacetBase.h" />
     <ClInclude Include="AGeometry.h" />
+    <ClInclude Include="CarDoor.h" />
     <ClInclude Include="Lens.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="Picture.h" />

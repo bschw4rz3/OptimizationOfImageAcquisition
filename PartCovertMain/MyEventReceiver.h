@@ -72,6 +72,7 @@ enum {
     GUI_ID_TRIANGLE_BUTTON,
     GUI_ID_TRAPEZE_BUTTON,
     GUI_ID_ELIPSE_BUTTON,
+    GUI_ID_CARDOOR_BUTTON,
     GUI_ID_GRID_APPROACHES,
     GUI_ID_ALL
 };
@@ -112,6 +113,7 @@ private:
     AGeometry* triangle;
     AGeometry* trapeze;
     AGeometry* elipse;
+    AGeometry* carDoor;
 
     double coverageOfLastRun;
     int imageCountOfLastRun;
@@ -120,7 +122,7 @@ public:
     MyEventReceiver(GraphicEngine* graphic_engine, BruteForceService* brute_force_service, GreedyService* greedy_service, GridApproachesService* gridApproachesService, MonteCarloHittingSetService* monte_carlo_hitting_set_service, 
         MonteCarloService* monte_carlo_service, QuadSortService* quad_sort_service, Picture* picture, BananaPrimitive* primitive, BinaryService* binary_service, AGeometry* geometry, 
         AGeometry* pointed_facet, AGeometry* hexagon, AGeometry* small_pointed_pupil_facet, AGeometry* pointed_pupil_facet, AGeometry* square, AGeometry* pointedTriangle, AGeometry* triangle, 
-        AGeometry* trapeze, AGeometry* elipse);
+        AGeometry* trapeze, AGeometry* elipse, AGeometry* carDoor);
 
     ~MyEventReceiver();
 

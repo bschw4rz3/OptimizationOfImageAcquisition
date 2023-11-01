@@ -19,8 +19,8 @@ bootvtlgGreedy <- do(10000) * mean(~GREEDY, data=resample(quality), na.rm=TRUE)
 lowerbootvtlgGreedy <- do(5000) * mean(~GREEDY, data=resample(quality), na.rm=TRUE)
 
 # Normalverteilung?
-ks.test(bootvtlgGreedy$mean, "pnorm", mean=mean(bootvtlgGreedy$mean), sd=sd(bootvtlgGreedy$mean))
-shapiro.test(lowerbootvtlgGreedy$mean)
+ks.test(bootvtlgGreedy$mean, "pnorm", mean=mean(bootvtlgGreedy$mean), sd=sd(bootvtlgGreedy$mean)) # p < 0.05 = Keine Normalverteilung
+shapiro.test(lowerbootvtlgGreedy$mean) # p < 0.05 = Keine Normalverteilung
 
 write.csv2(bootvtlgGreedy, file="histogramQualityGreedy.csv", sep=";")
 
@@ -41,7 +41,7 @@ lowerbootvtlgFORCE<- do(5000) * mean(~FORCE, data=resample(quality), na.rm=TRUE)
 
 # Normalverteilung?
 ks.test(bootvtlgFORCE$mean, "pnorm", mean=mean(bootvtlgFORCE$mean), sd=sd(bootvtlgFORCE$mean))
-shapiro.test(lowerbootvtlgFORCE$mean)
+shapiro.test(lowerbootvtlgFORCE$mean) # p < 0.05 = Keine Normalverteilung
 
 write.csv2(bootvtlgFORCE, file="histogramQualityForce.csv", sep=";")
 
@@ -62,7 +62,7 @@ lowerbootvtlgSEQUENCE<- do(5000) * mean(~SEQUENCE_MONTE_CARLO, data=resample(qua
 
 # Normalverteilung?
 ks.test(bootvtlgSEQUENCE$mean, "pnorm", mean=mean(bootvtlgSEQUENCE$mean), sd=sd(bootvtlgSEQUENCE$mean))
-shapiro.test(lowerbootvtlgSEQUENCE$mean)
+shapiro.test(lowerbootvtlgSEQUENCE$mean) # p < 0.05 = Keine Normalverteilung
 
 write.csv2(bootvtlgSEQUENCE, file="histogramQualitySEQUENCE.csv", sep=";")
 
@@ -83,7 +83,7 @@ lowerbootvtlgROLLOUT<- do(5000) * mean(~ROLLOUT_MONTE_CARLO, data=resample(quali
 
 # Normalverteilung?
 ks.test(bootvtlgROLLOUT$mean, "pnorm", mean=mean(bootvtlgROLLOUT$mean), sd=sd(bootvtlgROLLOUT$mean))
-shapiro.test(lowerbootvtlgROLLOUT$mean)
+shapiro.test(lowerbootvtlgROLLOUT$mean) # p < 0.05 = Keine Normalverteilung
 
 write.csv2(bootvtlgROLLOUT, file="histogramQualityROLLOUT.csv", sep=";")
 
@@ -96,22 +96,43 @@ quantile(~mean, data=bootvtlgROLLOUT, probs=c(0.0, 0.95))
 prop(~mean > meanQuadPos, data=bootvtlgROLLOUT)
 
 
+## ---- Gridded Random vs. QUADPOS --------
+meanGRIDDED <- mean(quality$Gridded.Random, na.rm=TRUE)
+
+set.seed(132)
+bootvtlgGRIDDED <- do(10000) * mean(~Gridded.Random, data=resample(quality), na.rm=TRUE)
+lowerbootvtlgGRIDDED<- do(5000) * mean(~Gridded.Random, data=resample(quality), na.rm=TRUE)
+
+# Normalverteilung?
+ks.test(bootvtlgGRIDDED$mean, "pnorm", mean=mean(bootvtlgGRIDDED$mean), sd=sd(bootvtlgGRIDDED$mean))
+shapiro.test(lowerbootvtlgGRIDDED$mean) # p < 0.05 = Keine Normalverteilung
+
+write.csv2(bootvtlgGRIDDED, file="histogramQualityGRIDDED.csv", sep=";")
+
+qplot(bootvtlgGRIDDED$mean,
+      geom = "histogram")
+
+quantile(~mean, data=bootvtlgGRIDDED, probs=c(0.0, 0.95))
+
+# GG
+prop(~mean > meanQuadPos, data=bootvtlgGRIDDED)
+
 
 ##### ----------------------------------------------------------------
 ##### ---------------- SPEED -----------------------------------------
 ##### ----------------------------------------------------------------
 
 #--- Speed - bootstrapping -----------------------------------------------------
-meanQuadPos <- mean(speed$QUADPOS, na.rm=TRUE)
-meanGREEDY <- mean(speed$GREEDY, na.rm=TRUE)
+meanQuadPos <- mean(speed$QuadPos, na.rm=TRUE)
+meanGREEDY <- mean(speed$Greedy, na.rm=TRUE)
 
 set.seed(823)
-bootvtlgGreedy <- do(10000) * mean(~GREEDY, data=resample(speed), na.rm=TRUE)
-lowerbootvtlgGreedy <- do(5000) * mean(~GREEDY, data=resample(speed), na.rm=TRUE)
+bootvtlgGreedy <- do(10000) * mean(~Greedy, data=resample(speed), na.rm=TRUE)
+lowerbootvtlgGreedy <- do(5000) * mean(~Greedy, data=resample(speed), na.rm=TRUE)
 
 # Kann kein Hypothesentesten machen, da keine Normalverteilung vorhanden...
 ks.test(bootvtlgGreedy$mean, "pnorm", mean=mean(bootvtlgGreedy$mean), sd=sd(bootvtlgGreedy$mean))
-shapiro.test(lowerbootvtlgGreedy$mean)
+shapiro.test(lowerbootvtlgGreedy$mean) # p < 0.05 = Keine Normalverteilung
 
 write.csv2(bootvtlgGreedy, file="histogramSpeed.csv", sep=";")
 
@@ -134,4 +155,42 @@ kruskal.test(quadGreedy$Zeit.ms.~quadGreedy$Algorithmus)
 
 # Es liegen keine unterschiede vor...
 wilcox.test(Zeit.ms.~Algorithmus, data = quadGreedy, exact=FALSE, correct = FALSE, conf.int = TRUE)
+
+
+
+
+#--- Speed - bootstrapping - Gridded -----------------------------------------------------
+meanQuadPos <- mean(speed$QuadPos, na.rm=TRUE)
+meanGridded <- mean(speed$Gridded.Random, na.rm=TRUE)
+
+set.seed(823)
+bootvtlgGRIDDED <- do(10000) * mean(~Gridded.Random, data=resample(speed), na.rm=TRUE)
+lowerbootvtlgGRIDDED <- do(5000) * mean(~Gridded.Random, data=resample(speed), na.rm=TRUE)
+
+# Kann kein Hypothesentesten machen, da keine Normalverteilung vorhanden...
+ks.test(bootvtlgGRIDDED$mean, "pnorm", mean=mean(bootvtlgGRIDDED$mean), sd=sd(bootvtlgGRIDDED$mean))
+shapiro.test(lowerbootvtlgGRIDDED$mean) # p < 0.05 = Keine Normalverteilung
+
+write.csv2(bootvtlgGRIDDED, file="histogramSpeed.csv", sep=";")
+
+qplot(bootvtlgGRIDDED$mean,
+      geom = "histogram")
+
+quantile(~mean, data=bootvtlgGRIDDED, probs=c(0.0, 0.95))
+
+
+# Kann kein Hypothesentesten machen, da keine Normalverteilung vorhanden...
+prop(~mean > meanQuadPos, data=bootvtlgGRIDDED)
+
+
+# ---- Speed - Mann-Whitney-U-Test ---------------------------------
+
+quadGridded <- results[results$Algorithmus == "GUI_ID_QUADSEARCH" | results$Algorithmus == "GUI_ID_GRID_APPROACHES",]
+
+boxplot(quadGridded$Zeit.ms., quadGridded$Algorithmus)
+
+kruskal.test(quadGridded$Zeit.ms.~quadGridded$Algorithmus)
+
+# Es liegen keine unterschiede vor...
+wilcox.test(Zeit.ms.~Algorithmus, data = quadGridded, exact=FALSE, correct = FALSE, conf.int = TRUE)
 

@@ -120,6 +120,9 @@
     <ClCompile Include="Lens.cpp">
       <Filter>Quelldateien\models\facets</Filter>
     </ClCompile>
+    <ClCompile Include="CarDoor.cpp">
+      <Filter>Quelldateien\models\facets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BananaFacet.h">
@@ -177,6 +180,9 @@
       <Filter>Headerdateien\models\facets</Filter>
     </ClInclude>
     <ClInclude Include="Lens.h">
+      <Filter>Headerdateien\models\facets</Filter>
+    </ClInclude>
+    <ClInclude Include="CarDoor.h">
       <Filter>Headerdateien\models\facets</Filter>
     </ClInclude>
   </ItemGroup>

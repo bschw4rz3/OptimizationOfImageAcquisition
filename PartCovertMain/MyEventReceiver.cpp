@@ -44,12 +44,14 @@ std::string enStr[] {
     stringify( GUI_ID_TRIANGLE_BUTTON),
     stringify( GUI_ID_TRAPEZE_BUTTON),
     stringify( GUI_ID_ELIPSE_BUTTON),
+    stringify( GUI_ID_CARDOOR_BUTTON),
+    stringify( GUI_ID_GRID_APPROACHES),
     stringify( GUI_ID_ALL )
 };
 
 MyEventReceiver::MyEventReceiver(GraphicEngine* graphicEngine, BruteForceService* bruteForceService, GreedyService* greedyService, GridApproachesService* gridApproachesService, MonteCarloHittingSetService* monteCarloRolloutService, 
                                  MonteCarloService* monteCarloSerivce,  QuadSortService* quadSortService, Picture* picture, BananaPrimitive* primitive, BinaryService* binaryService, AGeometry* bananaFacet, AGeometry* pointFacet,
-                                 AGeometry* hexagon, AGeometry* smallPupilFacet, AGeometry* pointedPupilFacet, AGeometry* square, AGeometry* pointedTriangle, AGeometry* triangle, AGeometry* trapeze, AGeometry* elipse)
+                                 AGeometry* hexagon, AGeometry* smallPupilFacet, AGeometry* pointedPupilFacet, AGeometry* square, AGeometry* pointedTriangle, AGeometry* triangle, AGeometry* trapeze, AGeometry* elipse, AGeometry* carDoor)
 {
     this->graphicEngine = graphicEngine;
 
@@ -82,6 +84,7 @@ MyEventReceiver::MyEventReceiver(GraphicEngine* graphicEngine, BruteForceService
     this->triangle = triangle;
     this->trapeze = trapeze;
     this->elipse = elipse;
+    this->carDoor = carDoor;
 }
 
 MyEventReceiver::~MyEventReceiver()
@@ -117,8 +120,8 @@ void MyEventReceiver::writeResults(const vector<SimulationResult>& vector)
 
 void MyEventReceiver::startSimulation()
 {
-    std::vector<s32> formIdList{ GUI_ID_ELIPSE_BUTTON/*, GUI_ID_POINTED_TRIANGLE_BUTTON ,GUI_ID_HEXAGON_BUTTON, GUI_ID_TRIANGLE_BUTTON,*/
-    	/*GUI_ID_TRAPEZE_BUTTON, GUI_ID_SQUARE_BUTTON*/ };
+    std::vector<s32> formIdList{ /*GUI_ID_ELIPSE_BUTTON, GUI_ID_POINTED_TRIANGLE_BUTTON, GUI_ID_HEXAGON_BUTTON, GUI_ID_TRIANGLE_BUTTON,
+    	GUI_ID_TRAPEZE_BUTTON, GUI_ID_SQUARE_BUTTON,*/ GUI_ID_CARDOOR_BUTTON  };
 
 	std::vector<s32> algorithmIdList{GUI_ID_QUADSEARCH, GUI_ID_GREEDY, GUI_ID_FORCE, GUI_ID_SEQUENCE_MONTE_CARLO, GUI_ID_ROLLOUT_MONTE_CARLO, GUI_ID_GRID_APPROACHES };
 
@@ -136,9 +139,12 @@ void MyEventReceiver::startSimulation()
             this->setForm(formId);
 			this->startAlgorithm(algId);
 
-            while(this->isRunning && secondsCounter < 300 && executionTime < 300000)
+            unsigned long long sleepIntervall = 1;
+            unsigned long long maxCounts = 10000/sleepIntervall;
+
+            while(this->isRunning && secondsCounter < maxCounts && executionTime < 300000)
             {
-	            std::this_thread::sleep_for(1000ms);
+	            std::this_thread::sleep_for(sleepIntervall*1ms);
 
                 auto end = chrono::steady_clock::now();
                 executionTime = chrono::duration_cast<chrono::milliseconds>(end - start).count();
@@ -243,6 +249,9 @@ bool MyEventReceiver::setForm(s32 id)
 	        return true;
 		case GUI_ID_ELIPSE_BUTTON:
 	        this->facet = (IGeometry*) this->elipse;
+	        return true;
+        case GUI_ID_CARDOOR_BUTTON:
+	        this->facet = (IGeometry*) this->carDoor;
 	        return true;
 	    default:
 	        return false;
