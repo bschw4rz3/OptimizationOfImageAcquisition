@@ -117,6 +117,16 @@ quantile(~mean, data=bootvtlgGRIDDED, probs=c(0.0, 0.95))
 # GG
 prop(~mean > meanQuadPos, data=bootvtlgGRIDDED)
 
+### ----------------------- friedman ---------------------------------------------------
+
+options(scipen = 999)
+
+friedmanData <- read.csv2("quality.friedman.csv", sep = ";", dec = ",")
+
+boxplot(friedmanData$Quality~friedmanData$Algorithm)
+friedman.test(y=friedmanData$Quality, groups=friedmanData$Algorithm, blocks=friedmanData$Geometrie)
+
+friedman_effsize(friedmanData, Quality ~  Algorithm | Geometrie)
 
 ##### ----------------------------------------------------------------
 ##### ---------------- SPEED -----------------------------------------
